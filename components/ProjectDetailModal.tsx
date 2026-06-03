@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, CheckCircle2, ArrowDown, ChevronRight, Lightbulb } from 'lucide-react'
 import { jenkinsDetail, type ProjectDetail } from '@/data/project-detail'
 
+const BASE_PATH = '/portfolio'
+
 interface Props {
   isOpen: boolean
   onClose: () => void
@@ -115,7 +117,7 @@ export default function ProjectDetailModal({ isOpen, onClose }: Props) {
                             {step.image && (
                               <div className="mt-4 rounded-xl overflow-hidden border border-blue-500/10 bg-black/40">
                                 <img
-                                  src={step.image}
+                                  src={BASE_PATH + step.image}
                                   alt={step.title}
                                   className="w-full h-auto"
                                   loading="lazy"
