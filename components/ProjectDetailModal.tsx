@@ -113,7 +113,7 @@ export default function ProjectDetailModal({ isOpen, onClose }: Props) {
                               </div>
                             )}
 
-                            {/* Screenshot */}
+                            {/* Single Screenshot */}
                             {step.image && (
                               <div className="mt-4 rounded-xl overflow-hidden border border-blue-500/10 bg-black/40">
                                 <img
@@ -122,6 +122,25 @@ export default function ProjectDetailModal({ isOpen, onClose }: Props) {
                                   className="w-full h-auto"
                                   loading="lazy"
                                 />
+                              </div>
+                            )}
+
+                            {/* Multiple Screenshots */}
+                            {step.images && step.images.length > 0 && (
+                              <div className="mt-4 space-y-4">
+                                {step.images.map((img, k) => (
+                                  <div key={k} className="rounded-xl overflow-hidden border border-blue-500/10 bg-black/40">
+                                    <img
+                                      src={BASE_PATH + img.src}
+                                      alt={img.caption}
+                                      className="w-full h-auto"
+                                      loading="lazy"
+                                    />
+                                    <p className="text-center text-xs text-gray-500 py-2 bg-black/60">
+                                      {img.caption}
+                                    </p>
+                                  </div>
+                                ))}
                               </div>
                             )}
                           </div>

@@ -2,6 +2,7 @@ export interface ProjectStep {
   title: string
   content: string
   image?: string
+  images?: { src: string; caption: string }[]
   flowChart?: string[]
 }
 
@@ -28,6 +29,13 @@ export const jenkinsDetail: ProjectDetail = {
       title: '步骤一：使用 Git 建立代码仓库',
       content:
         '首先对示例应用进行 Git 初始化，并创建 GitHub 远程仓库，实现代码版本管理。通过 git init、git add、git commit、git push 等命令将本地代码同步至 GitHub，为后续持续集成提供代码来源。',
+      images: [
+        { src: '/images/01a-git-init.png', caption: 'git init - 初始化本地仓库' },
+        { src: '/images/01b-git-add.png', caption: 'git add - 将文件添加到暂存区' },
+        { src: '/images/01c-git-commit.png', caption: 'git commit - 提交代码到本地仓库' },
+        { src: '/images/01d-git-push.png', caption: 'git push - 推送代码到远程仓库' },
+        { src: '/images/01e-github-repo.png', caption: 'GitHub 远程仓库 - 代码同步完成' },
+      ],
     },
     {
       title: '步骤二：修改应用并完成容器化部署',
