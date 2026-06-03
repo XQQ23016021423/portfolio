@@ -33,24 +33,25 @@ export const jenkinsDetail: ProjectDetail = {
       title: '步骤二：修改应用并完成容器化部署',
       content:
         '为了避免与 Jenkins 默认端口冲突，将 Flask 应用端口由 8080 修改为 5050。随后编写 Shell 脚本，通过 Docker 自动完成：创建 Dockerfile → 构建镜像 → 运行容器 → 暴露服务端口。最终成功部署 Flask Web 服务，实现应用容器化运行。',
-      image: '/images/端口8080改为5050.png',
+      image: '/images/01-port-change.png',
     },
     {
       title: '步骤三：部署 Jenkins 服务',
       content:
-        '通过 Docker 拉取 Jenkins LTS 镜像，并启动 Jenkins 容器。在 Jenkins 初始化过程中完成：安装推荐插件、配置管理员账户、建立 Jenkins 工作环境，完成持续集成平台的部署。',
+        '通过 Docker 拉取 Jenkins LTS 镜像，并启动 Jenkins 容器。在 Jenkins 初始化过程中完成：安装推荐插件、配置管理员账户、建立 Jenkins 工作环境，完成持续集成平台的部署。编写 Shell 自动化部署脚本，一键完成 Docker 镜像构建与容器启动。',
+      image: '/images/02-shell-script.png',
     },
     {
       title: '步骤四：创建 BuildAppJob 自动构建任务',
       content:
         '在 Jenkins 中创建 BuildAppJob，其主要功能包括：从 GitHub 仓库拉取最新代码、执行 sample-app.sh 构建脚本、自动生成 Docker 镜像、启动 Flask 容器、完成应用部署。整个过程无需人工参与，实现自动化构建。',
-      image: '/images/Shell自动化部署脚本.png',
+      image: '/images/03-build-job.png',
       flowChart: ['GitHub', 'Jenkins', 'BuildAppJob', 'Docker Build', 'Flask Application'],
     },
     {
       title: 'BuildAppJob 运行截图',
       content: 'Jenkins 中 BuildAppJob 任务执行成功，展示代码拉取、Docker 构建与容器启动的完整输出日志。',
-      image: '/images/Jenkins运行脚本.png',
+      image: '/images/04-jenkins-run.png',
     },
     {
       title: '步骤五：创建 TestAppJob 自动测试任务',
@@ -60,13 +61,13 @@ export const jenkinsDetail: ProjectDetail = {
     {
       title: 'TestAppJob 测试脚本',
       content: '编写 Shell 测试脚本，使用 curl 访问 Flask 应用并验证返回内容，确保每次构建后自动进行功能验证。',
-      image: '/images/编写测试脚本.png',
+      image: '/images/05-test-script.png',
     },
     {
       title: '步骤六：构建 Jenkins Pipeline 流水线',
       content:
         '为了进一步实现完整 CI/CD 流程，创建 SamplePipeline。流水线划分为三个阶段：Preparation（停止并删除旧容器，清理运行环境）→ Build（调用 BuildAppJob，自动完成代码构建与部署）→ Results（调用 TestAppJob，对部署后的应用进行自动测试）。从而形成完整的持续集成与持续交付流程。',
-      image: '/images/运行 SamplePipeline.png',
+      image: '/images/06-pipeline.png',
       flowChart: ['Preparation', 'Build', 'Test', 'SUCCESS'],
     },
   ],
