@@ -9,6 +9,7 @@ export interface Project {
   links?: {
     github?: string
     demo?: string
+    detail?: boolean
   }
 }
 
@@ -27,7 +28,7 @@ export const projects: Project[] = [
       '多分支支持：支持 feature/develop/main 多分支差异化流水线',
     ],
     links: {
-      github: 'https://github.com/xiongqingquan/jenkins-cicd',
+      detail: true,
     },
   },
   {
